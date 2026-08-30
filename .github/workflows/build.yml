@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v5 # Nâng cấp lên v5 để sử dụng Node 24
+        uses: actions/checkout@v5
 
       - name: Setup Theos
-        uses: actions/checkout@v5 # Nâng cấp lên v5
+        uses: actions/checkout@v5
         with:
           repository: theos/theos
           path: theos
@@ -26,11 +26,15 @@ jobs:
 
       - name: Build Tweak
         run: |
+          # Fix lỗi Exit code 128 của Git
+          git config --global --add safe.directory '*'
+          
+          # Thiết lập Theos và Build
           export THEOS=${{ github.workspace }}/theos
           make package
 
       - name: Upload Dylib Artifact
-        uses: actions/upload-artifact@v5 # Nâng cấp lên v5 để tương thích hệ thống mới
+        uses: actions/upload-artifact@v5
         with:
           name: MenuSupport-Dylib
           path: .theos/obj/debug/*.dylib
