@@ -1,0 +1,9 @@
+Package: com.kdevios.joinservermenu
+Name: MenuSupport
+Depends: mobilesubstrate
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Menu Join Server
+Maintainer: Bkhangg
+Author: @kdev_ios
+Section: Tweaks
