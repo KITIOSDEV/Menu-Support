@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4 # Đã cập nhật lên v4
+        uses: actions/checkout@v5 # Nâng cấp lên v5 để sử dụng Node 24
 
       - name: Setup Theos
-        uses: actions/checkout@v4 # Đã cập nhật lên v4
+        uses: actions/checkout@v5 # Nâng cấp lên v5
         with:
           repository: theos/theos
           path: theos
@@ -30,7 +30,7 @@ jobs:
           make package
 
       - name: Upload Dylib Artifact
-        uses: actions/upload-artifact@v4 # Đã cập nhật lên v4
+        uses: actions/upload-artifact@v5 # Nâng cấp lên v5 để tương thích hệ thống mới
         with:
           name: MenuSupport-Dylib
           path: .theos/obj/debug/*.dylib
