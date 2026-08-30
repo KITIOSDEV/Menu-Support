@@ -22,11 +22,14 @@ jobs:
 
       - name: Download iOS SDKs
         run: |
+          # Xóa thư mục sdks cũ (nếu có) để tránh lỗi exit code 128
+          rm -rf theos/sdks
+          # Clone bộ SDK mới về
           git clone https://github.com/theos/sdks.git theos/sdks
 
       - name: Build Tweak
         run: |
-          # Fix lỗi Exit code 128 của Git
+          # Fix lỗi Exit code 128 của Git khi đọc version
           git config --global --add safe.directory '*'
           
           # Thiết lập Theos và Build
