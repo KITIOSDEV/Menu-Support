@@ -22,10 +22,15 @@ jobs:
 
       - name: Download iOS SDKs
         run: |
-          # Xóa thư mục sdks cũ (nếu có) để tránh lỗi exit code 128
+          # Xóa thư mục sdks cũ (nếu có)
           rm -rf theos/sdks
           # Clone bộ SDK mới về
           git clone https://github.com/theos/sdks.git theos/sdks
+
+      - name: Install ldid
+        run: |
+          # Cài đặt công cụ ldid để cấp phép (sign) cho file dylib
+          brew install ldid
 
       - name: Build Tweak
         run: |
